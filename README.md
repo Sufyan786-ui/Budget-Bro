@@ -1,20 +1,26 @@
-# BudgetMaster 💰
+# BudgetMaster 
 
-A simple Expense Tracker built with Spring Boot and H2 Database.
+**BudgetMaster** is a simple and smart expense tracker built using Spring Boot. It helps you manage your daily and monthly spending with ease. Designed for simplicity, it also includes a touch of AI to make your budgeting experience better.
 
-## 🚀 Features
-- Add, update, delete expenses
-- Track your daily/monthly budget
-- H2 in-memory database for demo
-- Swagger/OpenAPI documentation
+---
 
-## 🛠️ Tech Stack
-- Java, Spring Boot
-- H2 Database
-- Swagger UI
+##  Features
+
+- Add, edit, and delete your expenses
+- View total spending by day or month
+- Lightweight — uses in-memory H2 database (no setup needed)
+- OpenAPI/Swagger documentation included
+- Optional AI integration for smart suggestions
+
+---
+
+##  Tech Stack
+
+- Java + Spring Boot
+- H2 Database (in-memory)
+- Swagger UI for API docs
 - Git & GitHub
+- OpenRouter API (AI-based suggestions)
 
-## 📂 How to Run
-1. Clone the repo
-2. Open in your IDE
-3. Run `ExpenseProjectApplication.java`
+```properties
+openrouter.api.key=your-api-key-here
