@@ -15,7 +15,8 @@ import java.util.List;
 @Service
 public class DataLodaer implements CommandLineRunner {
     @Autowired
-private User_repository repo;
+    private User_repository repo;
+
     @Override
     public void run(String... args) throws Exception {
         UserDetails user = new UserDetails(); // Or `User user = new User();`
@@ -27,8 +28,9 @@ private User_repository repo;
         user.setArr(Arrays.asList(expense1, expense2));
         repo.save(user);
     }
-    public void addDetails(UserDetails user){
-        List<User_Expenses> arr= user.getArr();
+
+    public void addDetails(UserDetails user) {
+        List<User_Expenses> arr = user.getArr();
         User_Expenses expense = new User_Expenses(7000, LocalDate.now(),
                 2000, "Books", user);
         if (user.getArr() == null) {
@@ -39,4 +41,9 @@ private User_repository repo;
         repo.save(user);
     }
 
+    //mthod to get all users
+    public List<UserDetails> getAllUsers() {
+        return repo.findAll();
+
+    }
 }

@@ -6,8 +6,8 @@ import com.restapi.ExpenseProject.User.User_Expenses;
 import com.restapi.ExpenseProject.jpadata.DataLodaer;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.hateoas.EntityModel;
-import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
+//import org.springframework.hateoas.EntityModel;
+//import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,10 +17,11 @@ import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+//import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+//import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RestController
+@CrossOrigin(origins = "*")
 public class Controller {
    @Autowired
     private DataLodaer load;
@@ -32,17 +33,11 @@ public class Controller {
         return list;
     }
     @GetMapping("/users/{id}")
-    public EntityModel<UserDetails> userbyid(@PathVariable int id){
-        Optional<UserDetails> list = repo.findById(id);
-        if(list.isEmpty()){
-            throw new UserNotFoundException("List is empty for id"+" " + id);
-        }
-        EntityModel entityModel= EntityModel.of(list.get());
-        WebMvcLinkBuilder link = linkTo(methodOn(this.getClass()).userbyid(id));
-        entityModel.add(link.withRel("all-users"));
-        return entityModel;
-
+    public UserDetails userbyid(@PathVariable int id) {
+        return repo.findById(id)
+                .orElseThrow(() -> new UserNotFoundException("List is empty for id " + id));
     }
+
     @PostMapping("/users")
     public ResponseEntity<Object> add_newuser(@Valid @RequestBody UserDetails user){
         UserDetails save=  repo.save(user);
