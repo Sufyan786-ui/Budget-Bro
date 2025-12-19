@@ -41,9 +41,13 @@ public class DataLodaer implements CommandLineRunner {
         repo.save(user);
     }
 
-    //mthod to get all users
+/* <<<<<<<<<<<<<<  ✨ Windsurf Command 🌟 >>>>>>>>>>>>>>>> */
+
     public List<UserDetails> getAllUsers() {
+        // Retrieve all users from the repository
         return repo.findAll();
 
     }
 }
+
+//method to get singlr user

@@ -12,6 +12,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/ai")
+@CrossOrigin(origins = "*")
 public class Openai_Controller {
     @Autowired
     private User_repository repo;
